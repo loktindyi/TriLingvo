@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         UserCss
+// @name         Tri-UserCss
 // @namespace    https://space.bilibili.com/379335206
 // @version      1.00
 // @description  通过这个脚本，你可以方便地自定义任何网站的样式（若你有一定的相关知识，你可以将那些网站美化得十分漂亮）
