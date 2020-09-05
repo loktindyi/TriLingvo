@@ -1,0 +1,40 @@
+// ==UserScript==
+// @name         UserCss
+// @namespace    https://space.bilibili.com/379335206
+// @version      1.00
+// @description  通过这个脚本，你可以方便地自定义任何网站的样式（若你有一定的相关知识，你可以将那些网站美化得十分漂亮）
+// @author       哔哩哔哩@言叶与言
+// @include      *
+// @run-at       document-start
+// @require      https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js
+// @grant        GM_addStyle
+// @grant        GM_setValue
+// @grant        GM_getValue
+// @grant        GM_listValues
+// @grant        GM_deleteValue
+// @grant        GM_registerMenuCommand
+// ==/UserScript==
+
+(function() {
+	//基本样式
+	GM_addStyle(`.Vzin_user_css_text{width: 300px; height: 650px !important; position: fixed; right: 8%; top: 5%; background-color: rgba(255, 255, 255, 0.8); font-size: 100%; color: #fa7298; resize: none; outline: none; border-radius: 16px; border-color: white; padding: 10px; z-index: 99999}
+.Vzin_user_css_text:focus{box-shadow: 0 0 15px 3px rgba(250,114,152,.3);}
+.Vzin_user_btn{position: fixed; top: 0; left: 0; width: 6%; height: 6%; outline: none; border: none; background-color: rgba(250, 114, 152, 0.2); z-index: 99999}`);
+	//初始化
+	var userCss = ``;
+	var curl = window.location.href;
+	//取得用户样式
+	userCss = GM_getValue(curl,userCss);
+	//加载样式
+	GM_addStyle(userCss);
+	//菜单
+	GM_registerMenuCommand("调试",function(){
+		if (!$("#Vzin_user_btn")[0]){$("body")[0].innerHTML += `
+<input id="Vzin_user_btn" type="button" class="Vzin_user_btn" onclick="if ($('#Vzin_user_css_text')[0].style.display == 'none'){$('#Vzin_user_css_text')[0].style.display = 'block'}else{$('#Vzin_user_css_text')[0].style.display = 'none'}">
+<textarea id="Vzin_user_css_text" class="Vzin_user_css_text" onkeyup="document.getElementById('Vzin_user_style').innerHTML = this.value" type="input" style="display: block">` + userCss + `</textarea>
+<style id="Vzin_user_style" type="text/css">` + userCss + `</style>`
+		}});
+	GM_registerMenuCommand("保存",function(){GM_setValue(curl,$("#Vzin_user_css_text")[0].value)});
+	GM_registerMenuCommand("重置",function(){GM_deleteValue(curl);setTimeout(function(){window.location.reload()}, 200)});
+	GM_registerMenuCommand("加入星凰",function(){window.open("https://jq.qq.com/?_wv=1027&k=IMqY916N")})
+})();
