@@ -6,6 +6,7 @@
 // @author       哔哩哔哩@言叶与言
 // @include      *
 // @run-at       document-start
+// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/userCss@master/userCss-latest.user.js
 // @require      https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js
 // @grant        GM_addStyle
 // @grant        GM_setValue
