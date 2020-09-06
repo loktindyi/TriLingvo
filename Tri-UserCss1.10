@@ -15,7 +15,7 @@
 // @grant        GM_listValues
 // @grant        GM_deleteValue
 // @grant        GM_registerMenuCommand
-// @note         1.10 增加logo与支持链接
+// @note         1.10 增加logo与支持链接 改名
 // ==/UserScript==
 
 (function() {
