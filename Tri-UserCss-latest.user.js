@@ -1,19 +1,22 @@
 // ==UserScript==
 // @name         Tri-UserCss
 // @namespace    https://space.bilibili.com/379335206
-// @version      1.00
+// @version      1.10
 // @description  通过这个脚本，你可以方便地自定义任何网站的样式（若你有一定的相关知识，你可以将那些网站美化得十分漂亮）
 // @author       哔哩哔哩@言叶与言
 // @include      *
 // @run-at       document-start
-// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/userCss@master/userCss-latest.user.js
+// @supportURL   https://jq.qq.com/?_wv=1027&k=IMqY916N
+// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/userCss@master/Tri-UserCss-latest.user.js
 // @require      https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js
+// @icon         https://cdn.jsdelivr.net/gh/loktindyi/mybaiduhp@master/Tri.png
 // @grant        GM_addStyle
 // @grant        GM_setValue
 // @grant        GM_getValue
 // @grant        GM_listValues
 // @grant        GM_deleteValue
 // @grant        GM_registerMenuCommand
+// @note         1.10 增加logo与支持链接 改名
 // ==/UserScript==
 
 (function() {
