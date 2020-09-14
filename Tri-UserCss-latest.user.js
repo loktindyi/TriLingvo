@@ -5,7 +5,8 @@
 // @name:en      TriLingvo
 // @namespace    https://space.bilibili.com/379335206
 // @version      1.60
-// @description  通过这个脚本，你可以方便地自定义任何网站的样式 反馈群：884813590
+// @description:zh 自定义任何网站的样式 反馈群：884813590
+// @description:en Customize css style of any site QQGroup:884813590
 // @author       哔哩哔哩@言叶与言
 // @include      *
 // @run-at       document-start
@@ -97,7 +98,7 @@
 <input id="Vzin_user_btn" type="button" class="Vzin_user_btn" onclick="if (document.getElementById('Vzin_container').style.display == 'none'){document.getElementById('Vzin_container').style.display = 'block'}else{document.getElementById('Vzin_container').style.display = 'none'}">
 <div id="Vzin_container" style="display: block">
 <div class="Trindex">La nuna informoj: <font color="#fa7298">` + Trindex + _Trindex + `</font></div>
-<textarea id="Vzin_user_config" class="Vzin_user_config" onfocus="$('#Vzin-joinus')[0].style.display= 'block'" onkeyup="document.getElementById('Vzin_user_style').innerHTML = JSON.parse(this.value)[` + Trindex + `].TriUserCss" type="input">` + JSON.stringify(VzinConfig).replace(/,/g,",\n").replace(/\},/g,"},\n").replace(/Ell":1,/g,'Ell":1,\n') + `</textarea>
+<textarea id="Vzin_user_config" class="Vzin_user_config" onfocus="document.querySelector('#Vzin-joinus').style.display= 'block'" onkeyup="document.getElementById('Vzin_user_style').innerHTML = JSON.parse(this.value)[` + Trindex + `].TriUserCss" type="input">` + JSON.stringify(VzinConfig).replace(/,/g,",\n").replace(/\},/g,"},\n").replace(/Ell":1,/g,'Ell":1,\n') + `</textarea>
 </div><style id="Vzin_user_style" type="text/css">` + TriCss + `</style>`
 		}});
 	GM_registerMenuCommand("保存",function(){GM_setValue("VzinConfig",JSON.parse($("#Vzin_user_config")[0].value.replace(/\n/g,"")));setTimeout(function(){window.location.reload()}, 200)});
