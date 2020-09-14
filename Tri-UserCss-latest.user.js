@@ -1,7 +1,10 @@
 // ==UserScript==
-// @name         Tri-UserCss
+// @name         Tri-言叶言语
+// @name:zh      Tri-言叶言语
+// @name:zh      Tri-言叶言语
+// @name:en      TriLingvo
 // @namespace    https://space.bilibili.com/379335206
-// @version      1.30
+// @version      1.60
 // @description  通过这个脚本，你可以方便地自定义任何网站的样式 反馈群：884813590
 // @author       哔哩哔哩@言叶与言
 // @include      *
@@ -16,12 +19,16 @@
 // @grant        GM_listValues
 // @grant        GM_deleteValue
 // @grant        GM_registerMenuCommand
+// @note         1.60 改名
+// @note         1.50 移除正则 改用关键词匹配
+// @note         1.40 支持引用样式 多个正则可以引用同一样式 |支持纯字符串匹配
 // @note         1.30 全面支持正则！
-// @note         1.20 样式较大改动 现在存储的是host，不会存在www.xxx.com/ggggg存储的样式到了www.xxx.com/hhhhh不起作用的情况 |在未来，我有计划将用户输入的正则表达式应用到匹配域名上
+// @note         1.20 样式较大改动 现在存储的是host|在未来，我有计划将用户输入的正则表达式应用到匹配域名上
 // @note         1.10 增加logo与支持链接 改名
 // ==/UserScript==
 
 (function() {
+	window.location.href.indexOf('b');
 	//基本样式
 	GM_addStyle(`
 @-webkit-keyframes twinkling{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
@@ -33,40 +40,64 @@
 	//初始化
 	var VzinConfig = [
 		{
-			TriPrompto: "这是一个给百度网页添加背景图的例子|TriIndex不是必需的，额...这个也不是——Tri",
-			TriIndex: 0,
-			TriRegExp: "/www.baidu.com/",
+			TriLingvoEstasEll: 1,
+			Prompto: "绝对匹配|这个例子指定仅对哔哩哔哩主页注入样式|被引用时需要Trindex",
+			Trindex: 0,
+			TriLingvo: "www.bilibili.com",
 			TriUserCss: "body{background-size: cover; background-attachment: fixed; background-image: url('https://g.hiphotos.baidu.com/zhidao/pic/item/8644ebf81a4c510f973523a36b59252dd52aa592.jpg')}"
 		},
 		{
-			TriIndex: 1,
-			TriRegExp: "",
-			TriUserCss: ""
+			Prompto: "泛匹配|引用样式",
+			Trindex: 1,
+			TriLingvo: "www.bilibili.com/video/*",
+			TriUserCss: "0"
 		},
 		{
-			TriIndex: 2,
-			TriRegExp: "",
+			Prompto: "TrindexIsNotNecessary >> Tri",
+			TriLingvo: "",
 			TriUserCss: ""
 		}
 	]
-	//取得用户样式 取得索引 加载
-	VzinConfig = GM_getValue("VzinConfig",VzinConfig);
-	for (let tri = 0; tri < VzinConfig.length; tri++){
-		if (VzinConfig[tri].TriRegExp && eval(VzinConfig[tri].TriRegExp).test(window.location.href)){
-			var Trindex = tri;
-			var TriCss = VzinConfig[tri].TriUserCss;
-			GM_addStyle(TriCss)
+	//关键词匹配
+	function Lingvo(_TriLingvo){
+		let LingvoAl = _TriLingvo.indexOf("*");
+		if (LingvoAl != -1){
+			let Vzin = 0;
+			_TriLingvo = _TriLingvo.split("*");
+			for (let i = 0; i < _TriLingvo.length; i++){if(window.location.href.indexOf(_TriLingvo[i]) != -1){Vzin++}}
+			if (Vzin = _TriLingvo.length){return true}else{return false}
+		}else{
+			let curl = window.location.href.replace(/https?:\/\//,"");
+			if (curl[curl.length-1] == "/"){curl = curl.slice(0,curl.length-1)}
+			if (_TriLingvo == curl){return true}else{return false}
 		}
 	}
-	console.log(" 索引 " + Trindex + " 注入样式 " + TriCss);
+	//取得用户样式 取得索引 加载
+	VzinConfig = GM_getValue("VzinConfig",VzinConfig);
+	try{
+		for (let tri = 0; tri < VzinConfig.length; tri++){
+			if (Lingvo(VzinConfig[tri].TriLingvo)){
+				var Trindex = tri,_Trindex;
+				var TriCss = VzinConfig[tri].TriUserCss;
+				if (/^\d{1}$/.test(TriCss)){
+					_Trindex = parseInt(TriCss);
+					TriCss = VzinConfig[_Trindex].TriUserCss;
+					console.log(tri + " >> 引用样式 => 索引为 " + _Trindex);
+					_Trindex = " >> " + _Trindex
+				}else{_Trindex = ""}
+				GM_addStyle(TriCss)
+			}
+		}
+	}catch(err){if(VzinConfig[0].TriLingvoEstasEll){console.log(err)}}
+	if (typeof(Trindex) != "undefined"){console.log(" 索引 " + Trindex + _Trindex + " 注入样式 " + TriCss)}else{_Trindex = ""}
 	//菜单
 	GM_registerMenuCommand("调试",function(){
 		if (!$("#Vzin_user_btn")[0]){$("body")[0].innerHTML += `
 <input id="Vzin-joinus" type="button" style="display:none" class="Vzin-joinus" onclick="window.open('https://jq.qq.com/?_wv=1027&k=IMqY916N')" value="加入星凰">
 <input id="Vzin_user_btn" type="button" class="Vzin_user_btn" onclick="if (document.getElementById('Vzin_container').style.display == 'none'){document.getElementById('Vzin_container').style.display = 'block'}else{document.getElementById('Vzin_container').style.display = 'none'}">
 <div id="Vzin_container" style="display: block">
-<div class="Trindex">La nuna informoj: <font color="#fa7298">` + Trindex + `</font></div>
-<textarea id="Vzin_user_config" class="Vzin_user_config" onfocus="$('#Vzin-joinus')[0].style.display= 'block'" onkeyup="document.getElementById('Vzin_user_style').innerHTML = JSON.parse(this.value)[` + Trindex + `].TriUserCss" type="input">` + JSON.stringify(VzinConfig).replace(/,/g,",\n").replace(/\},/g,"},\n").replace(/Tri",/g,'Tri",\n') + `</textarea>
+<div class="Trindex">La nuna informoj: <font color="#fa7298">` + Trindex + _Trindex + `</font></div>
+<textarea id="Vzin_user_config" class="Vzin_user_config" onfocus="$('#Vzin-joinus')[0].style.display= 'block'" onkeyup="document.getElementById('Vzin_user_style').innerHTML = JSON.parse(this.value)[` + Trindex + `].TriUserCss" type="input">` + JSON.stringify(VzinConfig).replace(/,/g,",\n").replace(/\},/g,"},\n").replace(/Ell":1,/g,'Ell":1,\n') + `</textarea>
 </div><style id="Vzin_user_style" type="text/css">` + TriCss + `</style>`
 		}});
 	GM_registerMenuCommand("保存",function(){GM_setValue("VzinConfig",JSON.parse($("#Vzin_user_config")[0].value.replace(/\n/g,"")));setTimeout(function(){window.location.reload()}, 200)});
