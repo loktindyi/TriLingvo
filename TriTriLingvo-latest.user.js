@@ -11,9 +11,9 @@
 // @include      *
 // @run-at       document-start
 // @supportURL   https://jq.qq.com/?_wv=1027&k=IMqY916N
-// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/userCss@master/Tri-UserCss-latest.user.js
+// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/userCss@master/TriTriLingvo-latest.user.js
 // @require      https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js
-// @icon         https://cdn.jsdelivr.net/gh/loktindyi/userCss@master/Tri.png
+// @icon         https://cdn.jsdelivr.net/gh/loktindyi/TriLingvo@master/Tri.png
 // @grant        GM_addStyle
 // @grant        GM_setValue
 // @grant        GM_getValue
