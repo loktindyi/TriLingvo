@@ -20,6 +20,7 @@
 // @grant        GM_listValues
 // @grant        GM_deleteValue
 // @grant        GM_registerMenuCommand
+// @note         1.63 进行了一些优化
 // @note         1.62 修复泛匹配错误 更新了变量名|未来计划：开发者模式——更多信息
 // @note         1.60 改名
 // @note         1.50 移除正则 改用关键词匹配
