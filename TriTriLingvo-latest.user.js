@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Tri-言叶言语
 // @name:zh      Tri-言叶言语
-// @name:zh      Tri-言叶言语
+// @name:zh-CN   Tri-言叶言语
 // @name:en      TriLingvo
 // @namespace    https://space.bilibili.com/379335206
 // @version      1.64
