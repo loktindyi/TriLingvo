@@ -11,7 +11,7 @@
 // @include      *
 // @run-at       document-start
 // @supportURL   https://jq.qq.com/?_wv=1027&k=IMqY916N
-// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/TriLingvo@master/TriTriLingvo-latest.user.js
+// @updateURL    https://cdn.jsdelivr.net/gh/loktindyi/TriLingvo@master/Tri-UserCss-latest.user.js
 // @require      https://cdn.jsdelivr.net/npm/jquery@3.4.0/dist/jquery.min.js
 // @icon         https://cdn.jsdelivr.net/gh/loktindyi/TriLingvo@master/Tri.png
 // @grant        GM_addStyle
@@ -46,7 +46,7 @@
 			Prompto: "绝对匹配|这个例子指定仅对哔哩哔哩主页注入样式|被引用时需要Trindex",
 			Trindex: 0,
 			TriEsprimo: "www.bilibili.com",
-			TriLingvo: ".simplify-home{background-size: cover; background-attachment: fixed; background-image: url('https://g.hiphotos.baidu.com/zhidao/pic/item/8644ebf81a4c510f973523a36b59252dd52aa592.jpg')}"
+			TriLingvo: "body{background-size: cover; background-attachment: fixed; background-image: url('https://g.hiphotos.baidu.com/zhidao/pic/item/8644ebf81a4c510f973523a36b59252dd52aa592.jpg')}"
 		},
 		{
 			Prompto: "泛匹配|引用样式",
