@@ -30,7 +30,6 @@
 // ==/UserScript==
 
 (function() {
-	window.location.href.indexOf('b');
 	//基本样式
 	GM_addStyle(`
 @-webkit-keyframes twinkling{0%{opacity:1}50%{opacity:0}100%{opacity:1}}
