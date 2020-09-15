@@ -4,7 +4,7 @@
 // @name:zh      Tri-言叶言语
 // @name:en      TriLingvo
 // @namespace    https://space.bilibili.com/379335206
-// @version      1.62
+// @version      1.63
 // @description:zh 自定义任何网站的样式 反馈群：884813590
 // @description:en Customize css style of any site QQGroup:884813590
 // @author       哔哩哔哩@言叶与言
